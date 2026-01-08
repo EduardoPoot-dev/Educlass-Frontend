@@ -1,0 +1,50 @@
+<div>
+  <h2 class="text-4xl text-center font-semibold text-gray-700 mb-10">Crear cuenta</h2>
+
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <div class="mt-5">
+      <label for="name" class="block">Nombre:</label>
+      <input pInputText formControlName="name" type="text" id="name" placeholder="Nombre" class="input w-full" />
+    </div>
+
+    @if(formUtils.isValidField(form, 'name')) {
+      <p class="label text-sm text-red-600">{{formUtils.getFieldError(form, 'name')}}</p>
+    }
+
+    <div class="mt-5">
+      <label for="email" class="block">Email:</label>
+      <input pInputText formControlName="email" type="email" id="email" placeholder="Email" class="input w-full" />
+    </div>
+
+    @if(formUtils.isValidField(form, 'email')) {
+      <p class="label text-sm text-red-600">{{formUtils.getFieldError(form, 'email')}}</p>
+    }
+
+    <div class="mt-5">
+      <label for="password" class="block">Contraseña:</label>
+      <input pInputText formControlName="password" type="password" id="password" placeholder="Contraseña" class="input w-full" />
+    </div>
+
+    @if(formUtils.isValidField(form, 'password')) {
+      <p class="label text-sm text-red-600">{{formUtils.getFieldError(form, 'password')}}</p>
+    }
+
+    <div class="mt-5">
+      <label for="confirmPassword" class="block">Repetir contraseña:</label>
+      <input pInputText formControlName="confirmPassword" type="password" id="confirmPassword" placeholder="Repetir contraseña" class="input w-full" />
+    </div>
+
+    @if(form.errors && form.errors['notEqual']) {
+      <p class="label text-sm text-red-600">Las contraseñas no coinciden</p>
+    }
+
+    <button type="submit" class="bg-blue-800 text-white p-2 cursor-pointer mt-10 w-full">Crear cuenta</button>
+
+    <p class="mt-10">
+      ¿Ya tienes una cuenta? <a class="font-semibold" routerLink="/auth/login">Iniciar sesión</a>
+    </p>
+
+  </form>
+</div>
+
+

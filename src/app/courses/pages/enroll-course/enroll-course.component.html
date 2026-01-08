@@ -1,0 +1,28 @@
+<div class="container mx-auto mt-10 rounded-lg shadow-2xs">
+  @if (availableCoursesResource.hasValue()) {
+    <p-dataview #dv [value]="availableCoursesResource.value()" emptyMessage=" ">
+      <ng-template #list let-items>
+        <div class="grid grid-cols-12 gap-4 grid-nogutter">
+          <div class="col-span-12"  class="col-span-12">
+            @for (item of items; track $index) {
+              <app-enroll-course-card
+                [course]="item"
+                (visible)="isVisible($event)"
+
+              ></app-enroll-course-card>
+            }
+          </div>
+        </div>
+      </ng-template>
+    </p-dataview>
+  }
+
+</div>
+
+@if(availableCoursesResource.value()?.length === 0 ) {
+    <p class="text-center">No hay cursos para inscribirse por el momento</p>
+}
+
+<app-join-course-modal
+  [visible]="visible"
+></app-join-course-modal>

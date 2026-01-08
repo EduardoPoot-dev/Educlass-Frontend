@@ -1,0 +1,22 @@
+<div class="bg-white rounded-xl shadow-lg p-6 mt-5">
+  @if (!isCourseCreator() ) {
+    @if (task()) {
+      <app-submited-task
+        [files]="task()!"
+      />
+    }
+    @else {
+      <app-submit-form
+        [courseId]="courseId()"
+        [taskId]="taskId()"
+        [taskDueDate]="taskDueDate()"
+      />
+    }
+  }
+  @else {
+    <app-submits-list
+      [courseId]="courseId()"
+      [taskId]="taskId()"
+    />
+  }
+</div>

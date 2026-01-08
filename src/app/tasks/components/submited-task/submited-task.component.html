@@ -1,0 +1,10 @@
+<div class="mt-4">
+  <h3 class="font-medium mb-2">Tu entrega</h3>
+
+  @for (file of files().files; track $index) {
+    <app-file-data
+      [file]="file"
+    />
+  }
+
+</div>

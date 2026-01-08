@@ -1,0 +1,32 @@
+<div>
+  <h2 class="text-4xl text-center font-semibold text-gray-700 mb-10">Iniciar sesión</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div class="mt-5">
+      <label for="name" class="block">Email:</label>
+      <input pInputText formControlName="email" type="text" id="name" placeholder="Email" class="input w-full " />
+    </div>
+
+    @if(formUtils.isValidField(form, 'email')) {
+      <p class="label text-sm text-red-600">{{formUtils.getFieldError(form, 'email')}}</p>
+    }
+
+    <div class="mt-5">
+      <label for="password" class="block">Contraseña:</label>
+      <input pInputText formControlName="password" type="password" id="password" placeholder="Contraseña" class="input w-full" />
+    </div>
+
+    @if(formUtils.isValidField(form, 'password')) {
+      <p class="label text-sm text-red-600">{{formUtils.getFieldError(form, 'password')}}</p>
+    }
+
+    <button class="bg-blue-800 text-white p-2 cursor-pointer mt-10 w-full">Iniciar sesión</button>
+
+
+    <p class="mt-10">
+      ¿No estás registrado? <a class="font-semibold" routerLink="/auth/new-account">Crea una cuenta</a>
+    </p>
+
+  </form>
+</div>

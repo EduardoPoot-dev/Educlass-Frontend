@@ -1,0 +1,31 @@
+<div class="pt-10 container mx-auto px-6 pb-10">
+  <app-task-header
+    [courseId]="courseId"
+    [name]="taskResource.value()?.name"
+    [dueDate]="taskResource.value()?.dueDate"
+  ></app-task-header>
+
+  <div class="grid md:grid-cols-3 gap-6">
+    <!-- Main Assignment Area -->
+    <div class="md:col-span-2 space-y-6">
+      <!-- Assignment Instructions -->
+      <app-task-description
+        [description]="taskResource.value()?.description"
+      ></app-task-description>
+
+        <app-task
+          [courseId]="courseId"
+          [taskId]="taskId"
+          [task]="submitedTaskResource.value()!"
+          [taskDueDate]="taskResource.value()?.dueDate!"
+        />
+
+    </div>
+
+    <!-- Sidebar -->
+    <app-sidebar
+      [task]="submitedTaskResource.value()!"
+      [dueDate]="taskResource.value()?.dueDate"
+    ></app-sidebar>
+  </div>
+</div>

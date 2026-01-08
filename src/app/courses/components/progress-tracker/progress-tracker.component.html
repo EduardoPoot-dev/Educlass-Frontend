@@ -1,0 +1,19 @@
+<div class="bg-white rounded-xl shadow-lg p-6">
+  <h2 class="text-xl font-bold mb-4">Tu progreso</h2>
+  <div class="mb-4">
+    <div class="flex justify-between mb-1">
+      <span class="text-sm font-medium">Finalización del curso</span>
+      <span class="text-sm font-medium">{{progress() | percent}}</span>
+    </div>
+    <div class="w-full bg-gray-200 rounded-full h-2.5">
+      <div class="bg-blue-600 h-2.5 rounded-full" [style]="`width: ${(progress() * 100)}%`"></div>
+    </div>
+  </div>
+
+  <div class="space-y-2">
+    <div class="flex justify-between text-sm">
+      <span>Tareas completadas</span>
+      <span>{{`${submitsQuantity()}/${taskQuantity()}`}}</span>
+    </div>
+  </div>
+</div>

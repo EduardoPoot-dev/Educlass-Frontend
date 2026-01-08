@@ -1,0 +1,29 @@
+<div class="px-5 container mx-auto mt-5">
+  <h2 class="text-xl font-bold mb-5">Estudiantes</h2>
+
+  <a [routerLink]="['/courses/course', courseId]"
+    class="text-blue-600 underline">Volver al curso</a>
+
+  @if (studentsResource.hasValue()) {
+    <div class="w-1/2 mt-5 p-4 rounded-lg border border-gray-100 bg-white">
+      <p-table [value]="students">
+        <ng-template #header>
+          <tr>
+            <th></th>
+            <th>Nombre</th>
+            <th>Email</th>
+          </tr>
+        </ng-template>
+        <ng-template #body let-student>
+          <tr>
+            <td></td>
+            <td>{{ student.name | titlecase }}</td>
+            <td>{{ student.email }}</td>
+          </tr>
+        </ng-template>
+
+        <ng-template #footer />
+      </p-table>
+  </div>
+  }
+</div>

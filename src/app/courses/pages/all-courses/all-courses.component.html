@@ -1,0 +1,31 @@
+<div class="container mx-auto px-6">
+  <div class="flex justify-between items-center mt-5">
+    <h2 class="text-2xl font-bold">
+      Bienvenido: {{userName() | titlecase}}
+    </h2>
+
+    <div class="flex gap-2">
+      <button (click)="showDialog()" class="bg-green-600 cursor-pointer p-2 rounded-lg text-white">Nuevo curso</button>
+      <a routerLink="/courses/enroll" class="bg-blue-600 p-2 rounded-lg text-white" >
+        Unirse a un curso
+      </a>
+    </div>
+  </div>
+
+  <h3 class="text-2xl font-bold mt-10">Mis cursos</h3>
+
+  <div class="mt-5 grid gap-5 grid-cols-3">
+    @for (course of courses(); track course.id) {
+      <app-course-card
+        [course]="course"
+      ></app-course-card>
+    }
+    @empty {
+      <p class="text-center col-start-1 col-end-5 ">Cree o inscribase a un curso y aparecerá aquí</p>
+    }
+  </div>
+</div>
+
+<app-new-course-modal
+  [visible]="visible"
+></app-new-course-modal>

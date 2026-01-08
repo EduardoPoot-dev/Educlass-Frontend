@@ -1,0 +1,52 @@
+<div class="container mx-auto px-5 mt-10">
+
+  <app-course-header
+    [courseData]="courseData()"
+    [progress]="progress()"
+  ></app-course-header>
+
+  <section class="grid md:grid-cols-3 gap-6">
+
+    <!-- Task list -->
+    <div class="md:col-span-2 space-y-6">
+      <div class="bg-white rounded-xl shadow-lg p-6">
+        <h2 class="text-2xl font-bold mb-4">
+          Tareas
+        </h2>
+          <div class="space-y-4">
+            @for (task of course()?.tasks; track task.id) {
+              <app-task-data
+                [courseId]="courseId || ''"
+                [task]="task"
+              ></app-task-data>
+            }
+            @empty {
+              <p>No hay tareas asignadas</p>
+            }
+          </div>
+      </div>
+    </div>
+
+    <!-- Progress Tracker -->
+    <div class="space-y-6">
+      @if (!isCourseCreator()) {
+        <app-progress-tracker
+          [courseId]="courseId!"
+          [taskQuantity]="courseData().tasksQuantity"
+          (progressChange)="progress.set($event)"
+        />
+      }
+      @else {
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <a
+            [routerLink]="['/courses/course', courseId, 'users']"
+            class="px-4 py-2 cursor-pointer bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+          >
+            Ver participantes del curso
+          </a>
+        </div>
+      }
+    </div>
+
+  </section>
+</div>

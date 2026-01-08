@@ -1,0 +1,25 @@
+<div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+  <div class="flex items-center justify-between mb-4">
+    <div>
+      <div class="flex items-center gap-2 mb-2">
+        <a [routerLink]="['/courses/course', courseId()]" class="text-blue-600 hover:text-blue-700">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </a>
+        <span class="text-gray-500">
+          {{name() | titlecase}}
+        </span>
+      </div>
+      <h1 class="text-3xl font-bold text-gray-900">
+        {{name() | titlecase}}
+      </h1>
+      <div class="flex items-center gap-4 mt-2">
+        <span class="text-gray-600">
+          Fecha de vencimiento: {{dueDate() | date: "d 'del' MMMM 'de' y, h:mma"}}
+        </span>
+        <!-- <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">100 points</span> -->
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div>
+  <h3 class="font-medium mb-2">Tareas entregadas</h3>
+
+  @for (file of studentsSubmitsResource.value(); track $index) {
+    <app-student-file
+      [studentData]="file"
+    />
+  }
+  @empty {
+    <p class="mt-5 text-sm">Ningún alumno ha realizado la entrega de este trabajo</p>
+  }
+</div>

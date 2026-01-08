@@ -1,0 +1,132 @@
+<p-dialog
+  header="Unirse al curso"
+  [modal]="true"
+  [(visible)]="isVisible"
+  [style]="{ width: '25rem' }"
+  (onHide)="onHide()"
+>
+    <!-- <span class="p-text-secondary block mb-8">Nuevo curso</span> -->
+    <form [formGroup]="form" (submit)="onSubmit()" class="-mt-5">
+
+
+      <div class="mt-5">
+        <label for="password" class="block">Contraseña:</label>
+        <input pInputText formControlName="password" type="password" id="password" placeholder="Contraseña" class="input w-full" />
+      </div>
+
+      @if(formUtils.isValidField(form, 'password')) {
+        <p class="label text-sm text-red-600">{{formUtils.getFieldError(form, 'password')}}</p>
+      }
+
+      <button type="submit" class="bg-blue-800 text-white p-2 cursor-pointer mt-10 w-full">Crear cuenta</button>
+
+
+
+    </form>
+</p-dialog>
+
+<p-toast position="top-right" />
+<!-- <dialog id="my_modal_3" class="modal">
+  <div class="modal-box">
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+    <h3 class="text-2xl font-bold">Nuevo curso</h3>
+
+    <form [formGroup]="form" (submit)="onSubmit()" class="mt-5">
+      <div class="mt-5">
+        <label for="name" class="block">Nombre:</label>
+        <input formControlName="name" type="text" id="name" placeholder="Nombre" class="input w-full" />
+      </div>
+
+      @if(formUtils.isValidField(form, 'name')) {
+      <p class="label text-sm text-red-600">{{formUtils.getFieldError(form, 'name')}}</p>
+      }
+
+      <div class="mt-5">
+        <label for="password" class="block">Contraseña:</label>
+        <input formControlName="password" type="password" id="password" placeholder="Contraseña" class="input w-full" />
+      </div>
+
+      @if(formUtils.isValidField(form, 'password')) {
+      <p class="label text-sm text-red-600">{{formUtils.getFieldError(form, 'password')}}</p>
+      }
+
+      <div class="mt-5">
+        <label for="confirmPassword" class="block">Repetir contraseña:</label>
+        <input formControlName="confirmPassword" type="password" id="confirmPassword" placeholder="Repetir contraseña"
+          class="input w-full" />
+      </div>
+
+      @if(formUtils.isValidField(form, 'confirmPassword')) {
+        <p class="label text-sm text-red-600">{{formUtils.getFieldError(form, 'confirmPassword')}}</p>
+      }
+
+      @if(form.errors && form.errors['notEqual']) {
+        <p class="label text-sm text-red-600">Las contraseñas no coinciden</p>
+      }
+
+      <div class="grid grid-cols-2 gap-3">
+        <div class="grid grid-cols-2 gap-3">
+          <div class="mt-5">
+            <label for="grade" class="block">Grado:</label>
+            <select name="grade" class="select" formControlName="grade">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+
+            @if(formUtils.isValidField(form, 'grade')) {
+            <p class="label text-sm text-red-600">{{formUtils.getFieldError(form, 'garde')}}</p>
+            }
+          </div>
+
+          <div class="mt-5">
+            <label for="group" class="block">Grupo:</label>
+            <select name="group" formControlName="group" class="select">
+              <option value="a">A</option>
+              <option value="b">B</option>
+              <option value="c">C</option>
+            </select>
+
+            @if(formUtils.isValidField(form, 'group')) {
+            <p class="label text-sm text-red-600">{{formUtils.getFieldError(form, 'group')}}</p>
+            }
+          </div>
+        </div>
+
+        <div>
+          <div class="mt-5">
+            <label for="background" class="block">Imagen:</label>
+
+            <input (change)="onInputFileChange($event)" type="file" id="background" class="file-input" />
+
+            @if(formUtils.isValidField(form, 'background')) {
+            <p class="label text-sm text-red-600">{{formUtils.getFieldError(form, 'background')}}</p>
+            }
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="bg-blue-800 text-white p-2 cursor-pointer mt-10 w-full">Crear cuenta</button>
+
+
+
+    </form>
+
+  </div>
+
+</dialog>
+
+
+
+
+ -->
+

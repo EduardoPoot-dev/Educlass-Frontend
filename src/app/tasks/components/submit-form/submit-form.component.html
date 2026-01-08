@@ -1,0 +1,55 @@
+<div>
+  <h2 class="text-xl font-bold mb-4">Entregar trabajo</h2>
+  @if (formatedDueDate() > currentTime) {
+    <form [formGroup]="form" (submit)="onSubmit()">
+      <input
+        formControlName="files"
+        (change)="onInputFileChange($event)"
+        type="file"
+        id="background"
+        accept="application/pdf"
+        multiple
+        class="block w-64 p-2.5 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer focus:outline-none "
+      />
+      <button
+        type="submit"
+        class="bg-blue-800 disabled:bg-gray-300 disabled:cursor-not-allowed text-white py-2 px-4 rounded cursor-pointer mt-4"
+        [disabled]="btnSubmitDisabled()"
+      >Subir</button>
+    </form>
+  }
+  @else {
+    <p class="text-sm">Ya ha vencido el límite de tiempo de entrega</p>
+  }
+</div>
+<p-toast />
+
+
+
+<!-- @if (!isCourseCreator()) {
+  @if () {}
+}
+@else {
+  <div class="bg-white rounded-xl shadow-lg p-6">
+    <h2 class="text-xl font-bold mb-4">Trabajos entregados</h2>
+  </div>
+} -->
+
+  <!-- <div class="bg-white rounded-xl shadow-lg p-6 mt-5">
+    <h2 class="text-xl font-bold mb-4">Entregar trabajo</h2>
+
+
+    <form [formGroup]="form" (submit)="onSubmit()">
+      <input
+        formControlName="files"
+        (change)="onInputFileChange($event)"
+        type="file"
+        id="background"
+        accept="application/pdf"
+        multiple
+        class="block w-64 p-2.5 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer focus:outline-none "
+      />
+
+      <button type="submit" class="bg-blue-800 text-white py-2 px-4 rounded cursor-pointer mt-4">Subir</button>
+    </form>
+  </div> -->

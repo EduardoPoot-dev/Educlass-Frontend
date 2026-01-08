@@ -1,0 +1,33 @@
+
+  <!-- [ngClass]="{ 'border-t border-surface-200 dark:border-surface-700': !first }" -->
+  <div class="flex flex-col sm:flex-row sm:items-center p-6 gap-4">
+    <div class="md:w-40 h-full relative">
+      <img class="block xl:block mx-auto rounded-border w-full h-full object-cover"
+        [src]="course().background" />
+    </div>
+    <div class="flex flex-col md:flex-row justify-between md:items-center flex-1 gap-6">
+      <div class="flex flex-row md:flex-col justify-between items-start gap-2">
+        <div>
+          <span class="font-medium text-secondary text-sm">
+            Profesor: {{course().creator.name | titlecase}}
+          </span>
+          <div class="text-lg font-medium text-surface-900 dark:text-surface-0 mt-2">
+            {{course().name | titlecase}}
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col md:items-end gap-8">
+        <span class="text-xl font-semibold text-surface-900 dark:text-surface-0">
+          {{`${course().grade}-${course().group | titlecase}`}}
+        </span>
+        <div class="flex flex-row-reverse md:flex-row gap-2">
+          <p-button
+            (onClick)="enrollCourse()"
+            class="flex-auto md:flex-initial whitespace-nowrap"
+            label="Inscribirse"
+          />
+           <!-- [disabled]="item.inventoryStatus === 'OUTOFSTOCK'" -->
+        </div>
+      </div>
+    </div>
+  </div>
