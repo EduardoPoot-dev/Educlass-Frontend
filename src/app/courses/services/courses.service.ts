@@ -3,14 +3,14 @@ import { inject, Injectable, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { AuthService } from '@auth/services/auth.service';
 import { AvailableCoursesResponse, CourseResponse, JoinToCourseForm, NewCourseForm, SingleCourseResponse, StudentsResponse } from '@courses/interfaces/courses.interface';
-import { enviroment } from '@enviroment/enviroment';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class CoursesService {
 
   private http = inject(HttpClient)
-  private baseUrl = `${enviroment.backendUrl}/course`
+  private baseUrl = `${environment.backendUrl}/course`
   private authService = inject(AuthService)
 
   isCourseCreator = signal<boolean | null>(null)
@@ -72,7 +72,7 @@ export class CoursesService {
   }
 
   getSubmitsCourse(courseId: string) {
-    const url = `${enviroment.backendUrl}/submit/${courseId}/user-submits`
+    const url = `${environment.backendUrl}/submit/${courseId}/user-submits`
     return this.http.get<{id: string}[]>(url)
   }
 

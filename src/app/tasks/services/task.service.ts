@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { AuthService } from '@auth/services/auth.service';
-import { enviroment } from '@enviroment/enviroment';
 import { NewTaskForm, SubmitResponse, TaskResponse } from '@tasks/interfaces/task.interface';
 import { catchError, forkJoin, map, of, switchMap, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class TaskService {
-  private baseUrl = `${enviroment.backendUrl}/tasks`
+  private baseUrl = `${environment.backendUrl}/tasks`
   private http = inject(HttpClient)
   private authService = inject(AuthService)
 
@@ -41,7 +41,7 @@ export class TaskService {
   }
 
   uploadFile(formData: FormData) {
-    const url = `${enviroment.backendUrl}/tasks/files`
+    const url = `${environment.backendUrl}/tasks/files`
     return this.http.post<string[]>(url, formData).pipe(
       map(resp => resp[0])
     )
@@ -55,17 +55,17 @@ export class TaskService {
   }
 
   getTaskSubmited(courseId: string, taskId: string) {
-    const url = `${enviroment.backendUrl}/submit/${courseId}/${taskId}/submit`
+    const url = `${environment.backendUrl}/submit/${courseId}/${taskId}/submit`
     return this.http.get<SubmitResponse>(url)
   }
 
   newSubmit(files: {files: string[]}, courseId: string, taskId: string) {
-    const url = `${enviroment.backendUrl}/submit/${courseId}/${taskId}`
+    const url = `${environment.backendUrl}/submit/${courseId}/${taskId}`
     return this.http.post<string>(url, files)
   }
 
   getSubmitList(courseId: string, taskId: string) {
-    const url = `${enviroment.backendUrl}/submit/${courseId}/${taskId}`
+    const url = `${environment.backendUrl}/submit/${courseId}/${taskId}`
 
     return this.http.get<SubmitResponse[]>(url)
   }

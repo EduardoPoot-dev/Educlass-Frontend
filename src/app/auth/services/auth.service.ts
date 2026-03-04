@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { computed, inject, Injectable, linkedSignal, signal } from '@angular/core';
 import { LoginUser, NewUser, User } from '@auth/interfaces/auth.interface';
-import { enviroment } from '@enviroment/enviroment';
 import { rxResource } from "@angular/core/rxjs-interop"
 import { catchError, map, of, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
   private http = inject(HttpClient)
-  private baseUrl = `${enviroment.backendUrl}`
+  private baseUrl = `${environment.backendUrl}`
 
   _token = signal<string | null>(localStorage.getItem('TOKEN'))
   _user = signal<User | null>(null)
