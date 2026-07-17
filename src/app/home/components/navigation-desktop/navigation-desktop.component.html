@@ -1,10 +1,17 @@
 <nav class="w-full flex md:justify-end">
   <ul class="hidden md:flex py-10 text-xl gap-5 items-center ">
-    <li>
-      <a routerLink="/auth/login" class="cursor-pointer">Iniciar sesión</a>
-    </li>
-    <li>
-      <a routerLink="/auth/new-account" class="block cursor-pointer bg-green-600 text-white  rounded py-2 px-5">Crear cuenta</a>
-    </li>
+    @if(isAuthenticated()) {
+      <li>
+        <a routerLink="/courses" class="block bg-green-600 text-white  rounded py-2 px-5">Ir al dashboard</a>
+      </li>
+    } @else {
+      <li>
+        <a routerLink="/auth/login" class="cursor-pointer">Iniciar sesión</a>
+      </li>
+      <li>
+        <a routerLink="/auth/new-account" class="block cursor-pointer bg-green-600 text-white  rounded py-2 px-5">Crear
+          cuenta</a>
+      </li>
+    }
   </ul>
 </nav>

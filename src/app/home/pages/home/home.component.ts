@@ -6,7 +6,7 @@ import { NavigationMobileComponent } from "@home/components/navigation-mobile/na
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, NavigationDesktopComponent, NavigationMobileComponent],
+  imports: [NavigationDesktopComponent, NavigationMobileComponent],
   templateUrl: './home.component.html',
 })
 export class HomeComponent {

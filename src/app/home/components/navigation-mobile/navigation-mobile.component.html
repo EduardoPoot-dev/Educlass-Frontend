@@ -11,12 +11,18 @@
 
   @if (opened()) {
     <ul class="flex flex-col mt-3 bg-gray-200 rounded-lg py-3 text-xl gap-4 items-center  ">
-      <li>
-        <a routerLink="/auth/login" class="cursor-pointer">Iniciar sesión</a>
-      </li>
-      <li>
-        <a routerLink="/auth/new-account"  class="cursor-pointer">Crear cuenta</a>
-      </li>
+      @if(isAuthenticated()) {
+        <li>
+          <a routerLink="/courses" class="cursor-pointer">Ir al dashboard</a>
+        </li>
+      } @else {
+        <li>
+          <a routerLink="/auth/login" class="cursor-pointer">Iniciar sesión</a>
+        </li>
+        <li>
+          <a routerLink="/auth/new-account"  class="cursor-pointer">Crear cuenta</a>
+        </li>
+      }
     </ul>
   }
 </nav>
