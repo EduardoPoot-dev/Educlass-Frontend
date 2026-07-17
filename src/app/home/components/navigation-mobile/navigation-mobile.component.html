@@ -1,0 +1,22 @@
+<nav class="px-4 md:hidden">
+  <div class="mt-10 flex justify-start">
+    <button (click)="handleOpened()">
+      @if (opened()) {
+        <i class="pi pi-times" style="font-size: 2.2rem"></i>
+      } @else {
+        <i class="pi pi-bars" style="font-size: 2.2rem"></i>
+      }
+    </button>
+  </div>
+
+  @if (opened()) {
+    <ul class="flex flex-col mt-3 bg-gray-200 rounded-lg py-3 text-xl gap-4 items-center  ">
+      <li>
+        <a routerLink="/auth/login" class="cursor-pointer">Iniciar sesión</a>
+      </li>
+      <li>
+        <a routerLink="/auth/new-account"  class="cursor-pointer">Crear cuenta</a>
+      </li>
+    </ul>
+  }
+</nav>

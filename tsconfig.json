@@ -11,6 +11,8 @@
       "@shared/*": ["./src/app/shared/*"],
       "@courses/*": ["./src/app/courses/*"],
       "@tasks/*": ["./src/app/tasks/*"],
+      "@home/*": ["./src/app/home/*"],
+
     },
     "outDir": "./dist/out-tsc",
     "strict": true,

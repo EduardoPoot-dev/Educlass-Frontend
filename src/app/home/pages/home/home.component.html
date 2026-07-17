@@ -1,0 +1,87 @@
+<header class="max-w-7xl mx-auto">
+  <div>
+    @if (isAuthenticated()) {
+      <nav class="flex justify-end">
+        <ul class="flex py-10 text-xl gap-5 items-center">
+          <li>
+            <a
+              routerLink="/courses"
+              class="block bg-green-600 text-white  rounded py-2 px-5"
+            >Ir al dashboard</a>
+          </li>
+        </ul>
+      </nav>
+    } @else {
+      <home-navigation-desktop />
+      <home-navigation-mobile />
+    }
+  </div>
+
+  <div class="py-15 lg:py-20">
+      <p
+        class="text-5xl font-bold text-blue-600 text-center"
+      >EduClass</p>
+
+      <h1
+        class="text-6xl lg:text-7xl font-bold text-center mx-auto mt-10"
+      >
+        Donde se unen la enseñanza y el aprendizaje
+      </h1>
+
+      <p class="text-2xl text-center w-3/4 mx-auto mt-10">
+        Educlass ayuda a los educadores a crear experiencias de aprendizaje interesantes que pueden personalizar, administrar y medir.
+      </p>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto mt-15 lg:mt-40 px-4 lg:px-0" >
+  <section class="bg-gray-100 rounded-4xl p-10 lg:p-24">
+    <h2 class="text-2xl">
+      Herramienta diseñada para una enseñanza eficiente
+    </h2>
+
+    <ul class="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <li>
+        <h3 class="text-xl font-semibold">Ahorra tiempo en las tareas cotidianas</h3>
+        <p class="mt-5">
+          Puede revisar el trabajo que entregan los alumnos al instante desde la app web
+        </p>
+      </li>
+
+      <li>
+        <h3 class="text-xl font-semibold">Amplia el grupo de estudio</h3>
+        <p class="mt-5">
+          Los alumnos se pueden inscribir mediante una clave de acceso dado por el docente
+        </p>
+      </li>
+
+      <li>
+        <h3 class="text-xl font-semibold">Ten el control del aula</h3>
+        <p class="mt-5">
+          El docente puede ver a los alumnos inscritos al curso
+      </li>
+
+      <li>
+        <h3 class="text-xl font-semibold">Acceso unificado</h3>
+        <p class="mt-5">
+          Con tu misma cuenta, puedes crear e inscribirte a nuevas clases
+      </li>
+    </ul>
+  </section>
+</main>
+
+<section class="max-w-7xl mx-auto mt-40">
+  <h2 class="text-5xl font-bold text-center mx-auto pb-25 text-blue-600">
+    ¿Todo listo para transformar tu escuela?</h2>
+</section>
+
+<footer class="mt-10 border-t border-t-gray-300 py-15">
+  <div class="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center">
+    <p
+      class="text-4xl font-bold text-blue-600 text-center"
+    >EduClass</p>
+
+    <p class=" text-gray-700 mt-7 lg:mt-0">{{currentYear}} - Todos los derechos reservados </p>
+  </div>
+
+</footer>
