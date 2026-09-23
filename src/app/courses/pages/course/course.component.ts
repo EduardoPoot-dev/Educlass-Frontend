@@ -5,7 +5,6 @@ import { CourseHeaderComponent } from '@courses/components/course-header/course-
 import { rxResource } from '@angular/core/rxjs-interop';
 import { CoursesService } from '@courses/services/courses.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { ButtonModule } from 'primeng/button';
 
 
 @Component({
@@ -15,7 +14,6 @@ import { ButtonModule } from 'primeng/button';
     TaskDataComponent,
     CourseHeaderComponent,
     RouterLink,
-    ButtonModule,
   ],
   templateUrl: './course.component.html',
 })

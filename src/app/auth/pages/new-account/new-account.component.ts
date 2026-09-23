@@ -5,19 +5,16 @@ import { AuthService } from '@auth/services/auth.service';
 import { AlertComponent } from '@shared/alert/alert.component';
 import { FormUtils } from '@utils/form-utils';
 import { catchError } from 'rxjs';
-import { InputTextModule } from 'primeng/inputtext';
-import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-new-account',
-  imports: [RouterLink, ReactiveFormsModule, InputTextModule],
+  imports: [RouterLink, ReactiveFormsModule],
   templateUrl: './new-account.component.html',
 })
 export class NewAccountComponent {
 
   private fb = inject(FormBuilder)
   private authService = inject(AuthService)
-  private messageService = inject(MessageService)
 
   formUtils = FormUtils
 
@@ -47,20 +44,12 @@ export class NewAccountComponent {
     this.authService.createAccount(data)
       .pipe(
         catchError((err) => {
-          this.messageService.add({
-            severity: 'error',
-            summary: 'Hubo un error',
-            detail: err.error.error,
-          })
+          window.alert(err.error.error)
           throw err.error.error
         })
       )
       .subscribe((resp) => {
-        this.messageService.add({
-            severity: 'success',
-            summary: 'Acción realizada con exito',
-            detail: String(resp),
-          })
+        window.alert(String(resp))
           this.form.reset()
       })
   }

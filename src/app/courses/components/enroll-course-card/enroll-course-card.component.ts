@@ -3,12 +3,11 @@ import { Component, effect, inject, input, linkedSignal, output, signal } from '
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AvailableCoursesResponse } from '@courses/interfaces/courses.interface';
-import { ButtonModule } from 'primeng/button';
 import { map } from 'rxjs';
 
 @Component({
   selector: 'app-enroll-course-card',
-  imports: [ButtonModule, TitleCasePipe],
+  imports: [TitleCasePipe],
   templateUrl: './enroll-course-card.component.html',
 })
 export class EnrollCourseCardComponent {

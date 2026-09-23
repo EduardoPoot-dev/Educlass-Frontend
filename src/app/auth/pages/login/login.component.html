@@ -5,7 +5,7 @@
 
     <div class="mt-5">
       <label for="name" class="block">Email:</label>
-      <input pInputText formControlName="email" type="text" id="name" placeholder="Email" class="input w-full " />
+      <input class="form-input" formControlName="email" type="text" id="name" placeholder="Email" />
     </div>
 
     @if(formUtils.isValidField(form, 'email')) {
@@ -14,7 +14,7 @@
 
     <div class="mt-5">
       <label for="password" class="block">Contraseña:</label>
-      <input pInputText formControlName="password" type="password" id="password" placeholder="Contraseña" class="input w-full" />
+      <input formControlName="password" type="password" id="password" placeholder="Contraseña" class="form-input" />
     </div>
 
     @if(formUtils.isValidField(form, 'password')) {

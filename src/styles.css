@@ -1,3 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
-@import "primeicons/primeicons.css";
+
+@layer components {
+	.form-input {
+		@apply border border-gray-400 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5;
+	}
+}

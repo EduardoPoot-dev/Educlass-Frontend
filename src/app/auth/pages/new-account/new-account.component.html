@@ -4,7 +4,7 @@
   <form [formGroup]="form" (submit)="onSubmit()">
     <div class="mt-5">
       <label for="name" class="block">Nombre:</label>
-      <input pInputText formControlName="name" type="text" id="name" placeholder="Nombre" class="input w-full" />
+      <input formControlName="name" type="text" id="name" placeholder="Nombre" class="form-input" />
     </div>
 
     @if(formUtils.isValidField(form, 'name')) {
@@ -13,7 +13,7 @@
 
     <div class="mt-5">
       <label for="email" class="block">Email:</label>
-      <input pInputText formControlName="email" type="email" id="email" placeholder="Email" class="input w-full" />
+      <input formControlName="email" type="email" id="email" placeholder="Email" class="form-input" />
     </div>
 
     @if(formUtils.isValidField(form, 'email')) {
@@ -22,7 +22,7 @@
 
     <div class="mt-5">
       <label for="password" class="block">Contraseña:</label>
-      <input pInputText formControlName="password" type="password" id="password" placeholder="Contraseña" class="input w-full" />
+      <input formControlName="password" type="password" id="password" placeholder="Contraseña" class="form-input" />
     </div>
 
     @if(formUtils.isValidField(form, 'password')) {
@@ -31,7 +31,7 @@
 
     <div class="mt-5">
       <label for="confirmPassword" class="block">Repetir contraseña:</label>
-      <input pInputText formControlName="confirmPassword" type="password" id="confirmPassword" placeholder="Repetir contraseña" class="input w-full" />
+      <input formControlName="confirmPassword" type="password" id="confirmPassword" placeholder="Repetir contraseña" class="form-input" />
     </div>
 
     @if(form.errors && form.errors['notEqual']) {

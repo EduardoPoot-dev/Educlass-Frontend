@@ -2,25 +2,10 @@ import { Component, inject, input, WritableSignal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CoursesService } from '@courses/services/courses.service';
 import { FormUtils } from '@utils/form-utils';
-import { DialogModule } from 'primeng/dialog'
-import { ButtonModule } from 'primeng/button';
-import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
-import { InputTextModule } from 'primeng/inputtext';
-import { FileUploadModule } from 'primeng/fileupload';
-import { SelectModule } from 'primeng/select';
 
 @Component({
   selector: 'app-new-course-modal',
-  imports: [
-    ReactiveFormsModule,
-    DialogModule,
-    ButtonModule,
-    ToastModule,
-    InputTextModule,
-    FileUploadModule,
-    SelectModule,
-  ],
+  imports: [ReactiveFormsModule],
   templateUrl: './new-course-modal.component.html',
 })
 export class NewCourseModalComponent {
@@ -32,7 +17,6 @@ export class NewCourseModalComponent {
 
   private fb = inject(FormBuilder)
   private coursesService = inject(CoursesService)
-  private messageService = inject(MessageService)
 
   form = this.fb.group({
     name: ['', [Validators.required]],
@@ -70,11 +54,7 @@ export class NewCourseModalComponent {
       this.coursesService.coursesResource.reload()
 
       setTimeout(() => {
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Success',
-          detail: 'Curso creado correctamente',
-        })
+        window.alert('Curso creado correctamente')
       }, 200);
     })
 

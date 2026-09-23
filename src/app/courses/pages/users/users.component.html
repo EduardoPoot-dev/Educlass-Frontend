@@ -6,24 +6,24 @@
 
   @if (studentsResource.hasValue()) {
     <div class="w-1/2 mt-5 p-4 rounded-lg border border-gray-100 bg-white">
-      <p-table [value]="students">
-        <ng-template #header>
+      <table class="w-full text-left">
+        <thead>
           <tr>
             <th></th>
             <th>Nombre</th>
             <th>Email</th>
           </tr>
-        </ng-template>
-        <ng-template #body let-student>
+        </thead>
+        <tbody>
+          @for (student of students; track $index) {
           <tr>
             <td></td>
             <td>{{ student.name | titlecase }}</td>
             <td>{{ student.email }}</td>
           </tr>
-        </ng-template>
-
-        <ng-template #footer />
-      </p-table>
+          }
+        </tbody>
+      </table>
   </div>
   }
 </div>

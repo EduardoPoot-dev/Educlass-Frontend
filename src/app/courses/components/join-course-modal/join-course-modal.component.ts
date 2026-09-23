@@ -1,10 +1,5 @@
 import { Component, computed, effect, inject, input, linkedSignal, OnDestroy, output, signal, WritableSignal } from '@angular/core';
 import { FormUtils } from '@utils/form-utils';
-import { DialogModule } from 'primeng/dialog'
-import { ButtonModule } from 'primeng/button';
-import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
-import { InputTextModule } from 'primeng/inputtext';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, map, switchMap, tap } from 'rxjs';
@@ -13,13 +8,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-join-course-modal',
-  imports: [
-    DialogModule,
-    ButtonModule,
-    ToastModule,
-    InputTextModule,
-    ReactiveFormsModule,
-  ],
+  imports: [ReactiveFormsModule],
   templateUrl: './join-course-modal.component.html',
 })
 export class JoinCourseModalComponent {
@@ -27,7 +16,6 @@ export class JoinCourseModalComponent {
 
   private fb = inject(FormBuilder)
   private activatedRoute = inject(ActivatedRoute)
-  private messageService = inject(MessageService)
   private router = inject(Router)
 
   visible = input.required<WritableSignal<boolean>>()
@@ -62,17 +50,9 @@ export class JoinCourseModalComponent {
       this.visible().set(false)
 
       if(resp.ok) {
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Success',
-          detail: resp.message
-        })
+        window.alert(resp.message)
       } else {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Error',
-          detail: resp.message
-        })
+        window.alert(resp.message)
       }
 
 
