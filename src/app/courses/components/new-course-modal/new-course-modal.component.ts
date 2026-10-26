@@ -2,6 +2,7 @@ import { Component, inject, input, WritableSignal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CoursesService } from '@courses/services/courses.service';
 import { FormUtils } from '@utils/form-utils';
+import { ToastService } from 'ngx-toastr-notifier';
 
 @Component({
   selector: 'app-new-course-modal',
@@ -9,6 +10,8 @@ import { FormUtils } from '@utils/form-utils';
   templateUrl: './new-course-modal.component.html',
 })
 export class NewCourseModalComponent {
+  private toastService = inject(ToastService)
+
   formUtils = FormUtils
   grade = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   group = ['A', 'B', 'C']
@@ -54,7 +57,7 @@ export class NewCourseModalComponent {
       this.coursesService.coursesResource.reload()
 
       setTimeout(() => {
-        window.alert('Curso creado correctamente')
+        this.toastService.success("Curso creado correctamente")
       }, 200);
     })
 

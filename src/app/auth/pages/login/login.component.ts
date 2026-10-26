@@ -4,6 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
 import { FormUtils } from '@utils/form-utils';
 import { catchError } from 'rxjs';
+import { ToastService } from 'ngx-toastr-notifier';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginComponent {
   private fb = inject(FormBuilder)
   private authService = inject(AuthService)
   private router = inject(Router)
+  private toastService = inject(ToastService);
 
   formUtils = FormUtils
 
@@ -35,11 +37,11 @@ export class LoginComponent {
     this.authService.login(data)
       .pipe(
         catchError((error) => {
-          window.alert(error.error.error)
+          this.toastService.error(error.error.error)
           return error
         })
       )
-      .subscribe((resp) => {
+      .subscribe(() => {
         this.router.navigateByUrl('/courses')
       })
 

@@ -1,6 +1,7 @@
 import { Component, computed, inject, input, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { TaskService } from '@tasks/services/task.service';
+import { ToastService } from 'ngx-toastr-notifier';
 
 @Component({
   selector: 'app-submit-form',
@@ -8,6 +9,7 @@ import { TaskService } from '@tasks/services/task.service';
   templateUrl: './submit-form.component.html',
 })
 export class SubmitFormComponent {
+  private toastService = inject(ToastService)
   private taskService = inject(TaskService)
   private fb = inject(FormBuilder)
 
@@ -31,7 +33,7 @@ export class SubmitFormComponent {
     this.taskService.submitTask(
       this.filesToSend!, this.courseId(), this.taskId()
     ).subscribe((resp) => {
-      window.alert(resp)
+      this.toastService.success(resp)
       window.location.reload()
     })
   }

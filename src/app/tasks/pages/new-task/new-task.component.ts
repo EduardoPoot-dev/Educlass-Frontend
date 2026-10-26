@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormUtils } from '@utils/form-utils';
 import { TaskService } from '@tasks/services/task.service';
+import { ToastService } from 'ngx-toastr-notifier';
 
 @Component({
   selector: 'app-new-task',
@@ -12,6 +13,7 @@ import { TaskService } from '@tasks/services/task.service';
   templateUrl: './new-task.component.html',
 })
 export class NewTaskComponent {
+  private toastService = inject(ToastService)
   private activatedRoute = inject(ActivatedRoute)
   private fb = inject(FormBuilder)
   private taskService = inject(TaskService)
@@ -40,14 +42,12 @@ export class NewTaskComponent {
 
     this.taskService.newTask(this.courseId, data).subscribe(resp => {
       if (resp.ok) {
-        window.alert(resp.message)
+        this.toastService.success(resp.message)
         setTimeout(() => this.goToTask(), 500)
       } else {
-        window.alert(resp.message)
+        this.toastService.error(resp.message)
       }
       this.form.reset()
-
-
     })
   }
 

@@ -2,9 +2,9 @@ import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service';
-import { AlertComponent } from '@shared/alert/alert.component';
 import { FormUtils } from '@utils/form-utils';
 import { catchError } from 'rxjs';
+import { ToastService } from 'ngx-toastr-notifier';
 
 @Component({
   selector: 'app-new-account',
@@ -15,6 +15,7 @@ export class NewAccountComponent {
 
   private fb = inject(FormBuilder)
   private authService = inject(AuthService)
+  private toastService = inject(ToastService);
 
   formUtils = FormUtils
 
@@ -43,14 +44,13 @@ export class NewAccountComponent {
 
     this.authService.createAccount(data)
       .pipe(
-        catchError((err) => {
-          window.alert(err.error.error)
-          throw err.error.error
+        catchError((error) => {
+          this.toastService.error(error.error.error)
+          throw error.error.error
         })
       )
       .subscribe((resp) => {
-        window.alert(String(resp))
-          this.form.reset()
+        this.toastService.success("Cuenta creada correctamente")
       })
   }
 
